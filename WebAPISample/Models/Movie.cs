@@ -10,6 +10,7 @@ namespace WebAPISample.Models
     public class Movie
     {
         [Key]
+        [DisplayName("Movie Id")]
         public int MovieId { get; set; }
         [DisplayName("Title")]
         public string Title { get; set; }

@@ -3,7 +3,7 @@ namespace WebAPISample.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialmigration : DbMigration
+    public partial class tryingtoseetables : DbMigration
     {
         public override void Up()
         {
