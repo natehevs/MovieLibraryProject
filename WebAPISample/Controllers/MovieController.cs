@@ -13,18 +13,24 @@ namespace WebAPISample.Controllers
     public class MovieController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
+<<<<<<< HEAD
         // GET api/values
         [HttpGet]
+=======
+>>>>>>> 29e2a618bf9796ede8c2559d50d969ce170ff2b2
         public IHttpActionResult Get()
         {
             //LINQ
             List<Movie> movieList = db.Movies.ToList();
             return Ok(movieList);
+<<<<<<< HEAD
         }
         [HttpGet]
+=======
+}
+>>>>>>> 29e2a618bf9796ede8c2559d50d969ce170ff2b2
         public IHttpActionResult Get(int id)
         {
-            //LINQ
             return Ok(db.Movies.Where(m => m.MovieId == id).SingleOrDefault());
         }
 
@@ -40,12 +46,14 @@ namespace WebAPISample.Controllers
         // PUT api/values/5
         public IHttpActionResult Put(int? id, [FromBody]Movie movie)
         {
-            Movie movieList = db.Movies.Where(h => h.MovieId == id).FirstOrDefault();
-            movieList.Title = movie.Title;
-            movieList.Genre = movie.Genre;
-            movieList.Director = movie.Director;
+            Movie moviesEdit = db.Movies.Where(s => s.MovieId == id).FirstOrDefault();
+            moviesEdit.Title = movie.Title;
+            moviesEdit.Genre = movie.Genre;
+            moviesEdit.Director = movie.Director;
             db.SaveChanges();
-            return Ok(movieList);
+            return Ok(movie);
+
+            // Update movie in db logic
         }
 
         // DELETE api/values/5
