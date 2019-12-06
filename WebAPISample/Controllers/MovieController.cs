@@ -13,22 +13,15 @@ namespace WebAPISample.Controllers
     public class MovieController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
-<<<<<<< HEAD
         // GET api/values
         [HttpGet]
-=======
->>>>>>> 29e2a618bf9796ede8c2559d50d969ce170ff2b2
         public IHttpActionResult Get()
         {
             //LINQ
             List<Movie> movieList = db.Movies.ToList();
             return Ok(movieList);
-<<<<<<< HEAD
         }
         [HttpGet]
-=======
-}
->>>>>>> 29e2a618bf9796ede8c2559d50d969ce170ff2b2
         public IHttpActionResult Get(int id)
         {
             return Ok(db.Movies.Where(m => m.MovieId == id).SingleOrDefault());
