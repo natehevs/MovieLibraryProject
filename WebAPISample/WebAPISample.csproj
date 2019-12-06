@@ -222,9 +222,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912041706055_Initial migration.cs" />
-    <Compile Include="Migrations\201912041706055_Initial migration.Designer.cs">
-      <DependentUpon>201912041706055_Initial migration.cs</DependentUpon>
+    <Compile Include="Migrations\201912041934337_tryingtoseetables.cs" />
+    <Compile Include="Migrations\201912041934337_tryingtoseetables.Designer.cs">
+      <DependentUpon>201912041934337_tryingtoseetables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -342,12 +342,12 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912041706055_Initial migration.resx">
-      <DependentUpon>201912041706055_Initial migration.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <EmbeddedResource Include="Migrations\201912041934337_tryingtoseetables.resx">
+      <DependentUpon>201912041934337_tryingtoseetables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

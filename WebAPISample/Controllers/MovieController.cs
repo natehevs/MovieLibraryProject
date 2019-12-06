@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,20 +12,6 @@ namespace WebAPISample.Controllers
     public class MovieController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        // GET api/values
-        //public IEnumerable<string> Get()
-        //{
-        //// Retrieve all movies from db logic
-            
-        //    return new string[] { "movie1 string", "movie2 string" };
-        //}
-
-        //// GET api/values/5
-        //public string Get(int id)
-        //{
-        //    // Retrieve movie by id from db logic
-        //    return "value";
-        //}
         public IHttpActionResult Get()
         {
             //LINQ
@@ -33,7 +20,6 @@ namespace WebAPISample.Controllers
 }
         public IHttpActionResult Get(int id)
         {
-            //LINQ
             return Ok(db.Movies.Where(m => m.MovieId == id).SingleOrDefault());
         }
 
@@ -44,7 +30,6 @@ namespace WebAPISample.Controllers
             db.SaveChanges();
             List<Movie> movieList = db.Movies.ToList();
             return Ok(movieList);
-            // Create movie in db logic
         }
 
         // PUT api/values/5
