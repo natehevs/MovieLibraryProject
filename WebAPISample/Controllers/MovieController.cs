@@ -10,35 +10,64 @@ namespace WebAPISample.Controllers
 {
     public class MovieController : ApiController
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET api/values
-        public IEnumerable<string> Get()
-        {
-            // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //// Retrieve all movies from db logic
+            
+        //    return new string[] { "movie1 string", "movie2 string" };
+        //}
 
-        // GET api/values/5
-        public string Get(int id)
+        //// GET api/values/5
+        //public string Get(int id)
+        //{
+        //    // Retrieve movie by id from db logic
+        //    return "value";
+        //}
+        public IHttpActionResult Get()
         {
-            // Retrieve movie by id from db logic
-            return "value";
+            //LINQ
+            List<Movie> movieList = db.Movies.ToList();
+            return Ok(movieList);
+}
+        public IHttpActionResult Get(int id)
+        {
+            //LINQ
+            return Ok(db.Movies.Where(m => m.MovieId == id).SingleOrDefault());
         }
 
         // POST api/values
-        public void Post([FromBody]Movie value)
+        public IHttpActionResult Post([FromBody]Movie movie)
         {
+            db.Movies.Add(movie);
+            db.SaveChanges();
+            List<Movie> movieList = db.Movies.ToList();
+            return Ok(movieList);
             // Create movie in db logic
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int? id, [FromBody]Movie movie)
         {
+            Movie moviesEdit = db.Movies.Where(s => s.MovieId == id).FirstOrDefault();
+            moviesEdit.Title = movie.Title;
+            moviesEdit.Genre = movie.Genre;
+            moviesEdit.Director = movie.Director;
+            db.SaveChanges();
+            return Ok(movie);
+
             // Update movie in db logic
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            Movie movie = db.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            List<Movie> movieList = db.Movies.ToList();
+            return Ok(movieList);
             // Delete movie from db logic
         }
     }
