@@ -15,7 +15,7 @@ namespace WebAPISample.Controllers
         public IHttpActionResult Get()
         {
             //LINQ
-            List<Movie> movieList = db.Movies.ToList();
+            var movieList = db.Movies;
             return Ok(movieList);
 }
         public IHttpActionResult Get(int id)
