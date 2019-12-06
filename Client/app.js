@@ -15,12 +15,12 @@
             data: JSON.stringify(dict),
             success: function(data){
                 WriteTable(data)
+
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
             }
         });
-
         e.preventDefault();
     }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 using WebAPISample.Models;
 
 namespace WebAPISample.Controllers
@@ -12,12 +13,15 @@ namespace WebAPISample.Controllers
     public class MovieController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        // GET api/values
+        [HttpGet]
         public IHttpActionResult Get()
         {
             //LINQ
             var movieList = db.Movies;
             return Ok(movieList);
-}
+        }
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             return Ok(db.Movies.Where(m => m.MovieId == id).SingleOrDefault());
@@ -56,5 +60,4 @@ namespace WebAPISample.Controllers
             // Delete movie from db logic
         }
     }
-
 }
